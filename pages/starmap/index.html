@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src *; object-src 'none'; base-uri 'none'">
+  <title>从绫开始 · 记忆星图</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand"><span class="brand-symbol" aria-hidden="true">※</span><div><h1>从绫开始 · 记忆星图</h1><span class="brand-sub">从绫开始 <span class="divider">/</span> 记忆观测站</span></div></div>
+    <div class="search-wrap"><span class="search-icon" aria-hidden="true"></span><input id="search" type="search" placeholder="搜索一段记忆、一个名字…" aria-label="搜索记忆" autocomplete="off" aria-controls="search-results"><span id="search-count" class="mono" aria-live="polite"></span><div id="search-results" class="search-results" hidden></div></div>
+    <div class="snapshot"><span class="live-dot"></span><span>本地快照</span><time id="snapshot-date" class="mono"></time></div>
+    <button id="filter-toggle" class="icon-button mobile-only" title="筛选" aria-label="筛选" aria-expanded="false">筛</button>
+  </header>
+
+  <div class="workspace">
+    <aside class="sidebar" id="filters" aria-label="记忆筛选">
+      <div class="section-heading"><span>观测范围</span><button id="reset" class="text-button" title="重置全部筛选">重置</button></div>
+      <div class="total"><strong id="node-total" class="mono">—</strong><span>条可见记忆</span></div>
+      <div class="scope-line"><span id="edge-total" class="mono">—</span> 条关联 <span class="sep">/</span> <span id="session-total" class="mono">—</span> 个会话</div>
+      <section class="filter-section"><h2>记忆分类 <span>颜色</span></h2><div id="kind-filters"></div></section>
+      <section class="filter-section"><h2>记忆等级 <span>尺寸</span></h2><div id="level-filters"></div></section>
+      <section class="filter-section date-section"><h2>时间范围</h2><label class="date-label">起始<input type="date" id="date-start" aria-label="起始日期"></label><label class="date-label">截止<input type="date" id="date-end" aria-label="截止日期"></label><p id="date-error" role="status" hidden>起始日期不能晚于截止日期</p></section>
+      <div class="archive-row"><label for="archived">包含归档</label><input id="archived" type="checkbox" role="switch"><label class="switch" for="archived" aria-hidden="true"></label></div>
+      <div class="sidebar-foot"><span class="live-dot"></span><span>记忆仍在，星光未散。</span></div>
+    </aside>
+
+    <main id="universe" class="universe" aria-label="记忆星图">
+      <canvas id="map" tabindex="0" aria-label="记忆关系星图；方向键平移，加减键缩放，Home 适配。可通过搜索定位并打开记忆。"></canvas>
+      <div class="map-heading"><div class="eyebrow"><span class="live-dot"></span> 当前星域</div><div class="cluster-row"><select id="session-select" aria-label="聚焦会话"><option value="">全部记忆</option></select><span id="cluster-count" class="mono"></span></div></div>
+      <div class="map-meta mono"><span id="visible-ratio"></span><span id="map-status">正在点亮星图</span></div>
+      <div id="empty" class="empty" hidden><span class="empty-orbit" aria-hidden="true"></span><h2>这片星域暂时安静</h2><p>没有符合当前条件的记忆</p><button id="empty-reset" class="plain-button">重置筛选</button></div>
+      <div class="map-bottom"><div class="map-caption"><span class="crosshair" aria-hidden="true">+</span><span id="focus-caption">全部会话</span><span class="mono" id="zoom-value">100%</span></div><div class="map-tools" role="toolbar" aria-label="星图工具"><button id="toggle-edges" class="icon-button active" title="显示关联" aria-label="显示关联" aria-pressed="true">线</button><button id="toggle-bloom" class="icon-button active" title="关闭后期光晕" aria-label="关闭后期光晕" aria-pressed="true">光</button><button id="toggle-motion" class="icon-button active" title="暂停动态" aria-label="暂停动态" aria-pressed="true">Ⅱ</button><span class="tool-separator"></span><button id="zoom-out" class="icon-button" title="缩小" aria-label="缩小">−</button><button id="zoom-in" class="icon-button" title="放大" aria-label="放大">+</button><button id="fit" class="icon-button" title="适配星图" aria-label="适配星图">□</button></div></div>
+      <div class="map-help">滚轮缩放 · 拖动画布或节点 · 点击查看记忆</div>
+      <div id="tooltip" class="tooltip" hidden></div>
+      <aside id="detail" class="detail" hidden aria-label="记忆详情"><div class="detail-head"><span class="eyebrow">记忆切片 <span id="detail-id" class="mono"></span></span><button id="detail-close" class="icon-button" title="关闭详情" aria-label="关闭详情">×</button></div><div id="detail-content"></div></aside>
+    </main>
+  </div>
+  <footer class="footer"><span>从绫开始 <span class="footer-separator">·</span> 记忆星图</span><span id="footer-stats" class="mono"></span><span class="performance"><span class="live-dot"></span><span id="fps" class="mono">— FPS</span><span class="footer-separator">/</span><span>本地 · 只读</span></span></footer>
+  <script src="js/physics.js"></script>
+  <script src="js/boot.js?v=9"></script>
+</body>
+</html>

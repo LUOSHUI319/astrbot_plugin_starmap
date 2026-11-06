@@ -1,0 +1,10 @@
+name: astrbot_plugin_starmap
+display_name: 从绫开始 · 记忆星图
+author: "洛水 & 望山"
+version: 0.1.0
+desc: "从绫开始 · 记忆星图。把「从绫开始」的记忆画成星图：每个原子记忆是一颗星，同会话、同实体、文字相近的会被连成星座。装好后浏览器直接打开 http://127.0.0.1:6186/ 即可查看（不要用面板入口，那个地址需要登录令牌）。只读直连 congling 的数据库，不写不改；扫不到库时可在页面右下角「注入记忆库」手动绑定路径。"
+repo: "https://github.com/LUOSHUI319/astrbot_plugin_congling"
+entry: main.py
+support_platforms:
+  - aiocqhttp
+astrbot_version: ">=4.13,<5"

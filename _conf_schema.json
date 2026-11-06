@@ -1,0 +1,14 @@
+﻿{
+  "db_path": {
+    "description": "记忆库路径",
+    "hint": "留空会自动找 data/plugin_data/astrbot_plugin_congling/congling.db。找不到时也可以打开星图页面，点右下角「注入记忆库」手动绑定",
+    "type": "string",
+    "default": ""
+  },
+  "port": {
+    "description": "星图本地服务端口",
+    "hint": "默认 6186。装好后浏览器直接打开 http://127.0.0.1:6186/ 就能看星图；不要从面板入口点（那个地址要一次性登录令牌，会显示未授权）。端口被占用就换一个",
+    "type": "int",
+    "default": 6186
+  }
+}
